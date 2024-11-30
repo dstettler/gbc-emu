@@ -1,4 +1,4 @@
-use std::{collections::HashMap, fs::File, io::{Read, Seek}, vec};
+use std::{collections::HashMap, fs::File, io::{Read, Seek, SeekFrom}, vec};
 
 use crate::mappers::Mapper;
 
@@ -9,13 +9,12 @@ struct CpuBase {
     reg_hl: u16,
     reg_sp: u16,
     reg_pc: u16,
-    ram: vec<u8>,
     mapper: Box<dyn Mapper>
 }
 
 pub struct MemCpu {
     cpu_base: CpuBase,
-    rom: vec<u8>
+    rom: Vec<u8>
 }
 
 pub struct FileCpu {
